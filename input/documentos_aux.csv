@@ -1,0 +1,518 @@
+id_documento,id_arbitragem,tipo_documento,modo_de_acesso,tamanho_documento,macro_tipo
+1,38,alegacoes iniciais,Pedido de LAI,296,Alegações Iniciais
+2,38,resposta as alegacoes iniciais,Pedido de LAI,354,Resposta a documento
+3,38,replica,Pedido de LAI,146,Réplica
+4,38,treplica,Pedido de LAI,76,Tréplica
+5,38,sentenca homologatoria de acordo,Site,19,Sentença
+6,39,alegacoes iniciais,Pedido de LAI,26,Alegações Iniciais
+7,39,resposta as alegacoes iniciais,Pedido de LAI,55,Resposta a documento
+8,39,treplica,Pedido de LAI,32,Tréplica
+9,39,sentenca,Site,50,Sentença
+10,40,alegacoes iniciais,Pedido de LAI,25,Alegações Iniciais
+11,40,resposta as alegacoes iniciais,Pedido de LAI,63,Resposta a documento
+12,40,treplica,Pedido de LAI,36,Tréplica
+13,40,sentenca,Site,44,Sentença
+14,41,alegacoes iniciais,Pedido de LAI,96,Alegações Iniciais
+15,41,resposta as alegacoes iniciais (cptm),Pedido de LAI,50,Resposta a documento
+16,41,resposta as alegacoes iniciais (estado),Pedido de LAI,71,Resposta a documento
+17,41,replica,Pedido de LAI,89,Réplica
+18,41,treplica (cptm),Pedido de LAI,26,Tréplica
+19,41,treplica (estado),Pedido de LAI,20,Tréplica
+20,41,sentenca,Site,145,Sentença
+21,41,addendum a sentenca,Site,34,Sentença
+22,42,alegacoes iniciais,Site,101,Alegações Iniciais
+23,42,resposta as alegacoes iniciais,Site,150,Resposta a documento
+24,42,replica,Site,88,Réplica
+25,42,treplica,Site,126,Tréplica
+26,42,alegacoes finais,Site,66,Alegações Finais
+27,42,alegacoes finais requerente,Site,82,Alegações Finais
+28,53,alegacoes iniciais requerido,Pedido de LAI,37,Alegações Iniciais
+29,53,resposta as alegacoes iniciais,Pedido de LAI,44,Resposta a documento
+30,53,replica,Pedido de LAI,52,Réplica
+31,53,alegacoes finais requerido,Pedido de LAI,41,Alegações Finais
+32,53,alegacoes finais requerente,Pedido de LAI,70,Alegações Finais
+33,53,sentenca arbitral parcial,Pedido de LAI,156,Sentença
+34,53,sentenca arbitral final,Pedido de LAI,24,Sentença
+35,54,alegacoes iniciais,Pedido de LAI,82,Alegações Iniciais
+36,54,resposta as alegacoes iniciais,Pedido de LAI,85,Resposta a documento
+37,54,replica,Pedido de LAI,86,Réplica
+38,54,treplica,Pedido de LAI,51,Tréplica
+39,55,resposta as alegacoes iniciais,Pedido de LAI,62,Resposta a documento
+40,55,sentenca homologatoria de acordo,Pedido de LAI,46,Sentença
+41,56,alegacoes iniciais,Pedido de LAI,41,Alegações Iniciais
+42,56,resposta as alegacoes iniciais,Pedido de LAI,20,Resposta a documento
+43,56,replica,Pedido de LAI,45,Réplica
+44,56,treplica,Pedido de LAI,20,Tréplica
+45,56,alegacoes finais requerido,Pedido de LAI,31,Alegações Finais
+46,56,alegacoes finais requerente,Pedido de LAI,60,Alegações Finais
+47,56,sentenca arbitral,Pedido de LAI,91,Sentença
+48,56,addendum a sentenca,Pedido de LAI,31,Sentença
+49,43,alegacoes iniciais,Site,120,Alegações Iniciais
+50,43,resposta as alegacoes iniciais,Site,143,Resposta a documento
+51,43,replica,Site,99,Réplica
+52,43,treplica,Site,114,Tréplica
+53,43,alegacoes finais parciais requerente,Site,31,Alegações Finais
+54,43,alegacoes finais parciais requerido,Site,35,Alegações Finais
+55,43,sentenca arbitral parcial,Site,43,Sentença
+56,44,alegacoes iniciais,Site,80,Alegações Iniciais
+57,44,resposta as alegacoes iniciais,Site,145,Resposta a documento
+58,44,replica,Site,141,Réplica
+59,44,treplica,Site,180,Tréplica
+60,45,alegacoes iniciais,Site,53,Alegações Iniciais
+61,45,resposta as alegacoes iniciais,Site,43,Resposta a documento
+62,45,replica,Site,60,Réplica
+63,45,treplica,Site,14,Tréplica
+64,47,alegacoes iniciais,Site,34,Alegações Iniciais
+65,47,resposta as alegacoes iniciais e reconvencao,Site,36,Resposta a documento
+66,47,replica e resposta a reconvencao,Site,22,Réplica
+67,47,treplica e replica a resposta a reconvencao,Site,19,Tréplica
+68,47,treplica a reconvencao,Site,4,Tréplica
+69,47,sentenca arbitral parcial,Site,52,Sentença
+70,47,sentenca homologatoria de acordo,Site,30,Sentença
+71,47,addendum a sentenca,Site,18,Sentença
+72,48,alegacoes iniciais cptm,Site,78,Alegações Iniciais
+73,48,alegacoes iniciais requerente,Site,104,Alegações Iniciais
+74,48,alegacoes iniciais esp,Site,50,Alegações Iniciais
+75,48,resposta as alegacoes iniciais – cptm,Site,83,Resposta a documento
+76,48,resposta as alegacoes iniciais – requerente,Site,111,Resposta a documento
+77,48,resposta as alegacoes iniciais – esp,Site,53,Resposta a documento
+78,48,replica – cptm,Site,60,Réplica
+79,48,replica – requerente,Site,81,Réplica
+80,48,replica – esp,Site,37,Réplica
+81,48,treplica – cptm,Site,59,Tréplica
+82,48,treplica – requerente,Site,78,Tréplica
+83,48,treplica – esp,Site,32,Tréplica
+84,48,alegacoes finais parciais – cptm,Site,47,Alegações Finais
+85,48,alegacoes finais parciais – requerente,Site,71,Alegações Finais
+86,48,alegacoes finais parciais – esp,Site,101,Alegações Finais
+87,48,sentenca arbitral parcial,Site,188,Sentença
+88,48,addendum a sentenca parcial,Site,51,Sentença
+89,46,alegacoes iniciais,Site,51,Alegações Iniciais
+90,46,resposta as alegacoes iniciais – cptm,Site,43,Resposta a documento
+91,46,resposta as alegacoes iniciais – esp,Site,72,Resposta a documento
+92,46,replica,Site,54,Réplica
+93,46,treplica – cptm,Site,27,Tréplica
+94,46,treplica – esp,Site,32,Tréplica
+95,46,sentenca arbitral parcial,Site,167,Sentença
+96,49,alegacoes iniciais,Pedido de LAI,16,Alegações Iniciais
+97,49,resposta as alegacoes iniciais,Pedido de LAI,31,Resposta a documento
+98,49,replica,Pedido de LAI,34,Réplica
+99,49,treplica,Pedido de LAI,16,Tréplica
+100,49,sentenca arbitral parcial,Pedido de LAI,26,Sentença
+101,49,addendum a sentenca parcial,Pedido de LAI,12,Sentença
+102,49,sentenca homologatoria de acordo,Site,27,Sentença
+103,49,addendum a sentenca,Site,13,Sentença
+104,50,alegacoes iniciais,Pedido de LAI,50,Alegações Iniciais
+105,50,resposta as alegacoes iniciais – cptm,Pedido de LAI,48,Resposta a documento
+106,50,resposta as alegacoes iniciais – esp,Pedido de LAI,18,Resposta a documento
+107,50,replica,Pedido de LAI,63,Réplica
+108,50,treplica – cptm,Pedido de LAI,38,Tréplica
+109,50,treplica – esp,Pedido de LAI,54,Tréplica
+110,50,sentenca arbitral,Site,156,Sentença
+111,50,addendum a sentenca,Site,38,Sentença
+112,51,sentenca arbitral homologatoria de desistencia,Site,26,Sentença
+113,32,sentenca arbitral parcial,Site,132,Sentença
+114,32,addendum a sentenca parcial,Site,44,Sentença
+4.2,4,ordem procedimental,Site,9,Outros
+8.10,8,ordem procedimental,Pedido de LAI,2,Outros
+8.11,8,ordem procedimental,Pedido de LAI,2,Outros
+8.12,8,ordem procedimental,Pedido de LAI,14,Outros
+8.13,8,ordem procedimental,Pedido de LAI,3,Outros
+8.14,8,ordem procedimental,Pedido de LAI,2,Outros
+8.15,8,ordem procedimental,Pedido de LAI,3,Outros
+8.16,8,ordem procedimental,Pedido de LAI,3,Outros
+8.17,8,ordem procedimental,Pedido de LAI,2,Outros
+8.18,8,ordem procedimental,Pedido de LAI,8,Outros
+8.19,8,ordem procedimental,Pedido de LAI,6,Outros
+9.13,9,ordem procedimental,Pedido de LAI,5,Outros
+9.14,9,ordem procedimental,Pedido de LAI,3,Outros
+9.15,9,ordem procedimental,Pedido de LAI,4,Outros
+9.16,9,ordem procedimental,Pedido de LAI,5,Outros
+9.17,9,ordem procedimental,Pedido de LAI,3,Outros
+9.18,9,ordem procedimental,Pedido de LAI,4,Outros
+9.19,9,ordem procedimental,Pedido de LAI,3,Outros
+9.20,9,ordem procedimental,Pedido de LAI,2,Outros
+9.21,9,ordem procedimental,Pedido de LAI,3,Outros
+9.22,9,ordem procedimental,Pedido de LAI,2,Outros
+10.9,10,ordem procedimental,Pedido de LAI,3,Outros
+10.10,10,ordem procedimental,Pedido de LAI,4,Outros
+10.11,10,ordem procedimental,Pedido de LAI,4,Outros
+10.12,10,ordem procedimental,Pedido de LAI,2,Outros
+10.13,10,ordem procedimental,Pedido de LAI,2,Outros
+12.5,12,ordem procedimental,Pedido de LAI,2,Outros
+12.6,12,ordem procedimental,Pedido de LAI,2,Outros
+12.7,12,ordem procedimental,Pedido de LAI,5,Outros
+12.8,12,ordem procedimental,Pedido de LAI,2,Outros
+13.9,13,ordem procedimental,Pedido de LAI,5,Outros
+13.10,13,ordem procedimental,Pedido de LAI,4,Outros
+13.11,13,ordem procedimental,Pedido de LAI,3,Outros
+13.12,13,ordem procedimental,Pedido de LAI,5,Outros
+15.13,15,ordem procedimental,Pedido de LAI,3,Outros
+15.14,15,ordem procedimental,Pedido de LAI,9,Outros
+15.15,15,ordem procedimental,Pedido de LAI,1,Outros
+15.16,15,ordem procedimental,Pedido de LAI,6,Outros
+15.17,15,ordem procedimental,Pedido de LAI,6,Outros
+15.18,15,ordem procedimental,Pedido de LAI,2,Outros
+15.19,15,ordem procedimental,Pedido de LAI,2,Outros
+15.20,15,ordem procedimental,Pedido de LAI,2,Outros
+16.11,16,ordem procedimental,Pedido de LAI,2,Outros
+16.12,16,ordem procedimental,Pedido de LAI,2,Outros
+16.13,16,ordem procedimental,Pedido de LAI,2,Outros
+16.14,16,ordem procedimental,Pedido de LAI,15,Outros
+16.15,16,ordem procedimental,Pedido de LAI,2,Outros
+16.16,16,ordem procedimental,Pedido de LAI,2,Outros
+16.17,16,ordem procedimental,Pedido de LAI,2,Outros
+16.18,16,ordem procedimental,Pedido de LAI,17,Outros
+16.19,16,ordem procedimental,Pedido de LAI,2,Outros
+16.20,16,ordem procedimental,Pedido de LAI,2,Outros
+16.21,16,ordem procedimental,Pedido de LAI,2,Outros
+16.22,16,ordem procedimental,Pedido de LAI,2,Outros
+17.12,17,ordem procedimental,Pedido de LAI,2,Outros
+17.14,17,ordem procedimental,Pedido de LAI,1,Outros
+17.15,17,ordem procedimental,Pedido de LAI,4,Outros
+17.16,17,ordem procedimental,Pedido de LAI,3,Outros
+17.17,17,ordem procedimental,Pedido de LAI,3,Outros
+17.18,17,ordem procedimental,Pedido de LAI,2,Outros
+17.19,17,ordem procedimental,Pedido de LAI,11,Outros
+17.20,17,ordem procedimental,Pedido de LAI,5,Outros
+17.21,17,ordem procedimental,Pedido de LAI,2,Outros
+17.22,17,ordem procedimental,Pedido de LAI,2,Outros
+17.23,17,ordem procedimental,Pedido de LAI,1,Outros
+17.24,17,ordem procedimental,Pedido de LAI,2,Outros
+17.25,17,ordem procedimental,Pedido de LAI,1,Outros
+17.26,17,ordem procedimental,Pedido de LAI,2,Outros
+17.27,17,ordem procedimental,Pedido de LAI,2,Outros
+17.28,17,anexo ordem processual,Pedido de LAI,5,Outros
+17.29,17,ordem procedimental,Pedido de LAI,1,Outros
+17.30,17,ordem procedimental,Pedido de LAI,3,Outros
+17.31,17,ordem procedimental,Pedido de LAI,2,Outros
+17.32,17,ordem procedimental,Pedido de LAI,2,Outros
+17.33,17,ordem procedimental,Pedido de LAI,2,Outros
+17.34,17,ordem procedimental,Pedido de LAI,4,Outros
+17.35,17,ordem procedimental,Pedido de LAI,2,Outros
+17.36,17,ordem procedimental,Pedido de LAI,2,Outros
+17.37,17,ordem procedimental,Pedido de LAI,5,Outros
+17.38,17,ordem procedimental,Pedido de LAI,1,Outros
+17.39,17,ordem procedimental,Pedido de LAI,2,Outros
+17.40,17,ordem procedimental,Pedido de LAI,1,Outros
+18.6,18,ordem procedimental,Pedido de LAI,10,Outros
+18.7,18,ordem procedimental,Pedido de LAI,8,Outros
+18.8,18,ordem procedimental,Pedido de LAI,7,Outros
+19.2,19,ordem procedimental,Pedido de LAI,6,Outros
+19.3,19,ordem procedimental,Pedido de LAI,1,Outros
+19.4,19,ordem procedimental,Pedido de LAI,1,Outros
+19.5,19,ordem procedimental,Pedido de LAI,2,Outros
+19.6,19,ordem procedimental,Pedido de LAI,1,Outros
+19.7,19,ordem procedimental,Pedido de LAI,2,Outros
+19.8,19,ordem procedimental,Pedido de LAI,1,Outros
+36.6,36,decisao de esclarecimento,Site,7,Pedido
+23.2,23,ordem procedimental,Site,8,Outros
+23.3,23,ordem procedimental,Site,3,Outros
+23.4,23,ordem procedimental,Site,2,Outros
+23.5,23,ordem procedimental,Site,9,Outros
+23.6,23,ordem procedimental,Site,11,Outros
+23.7,23,ordem procedimental,Site,9,Outros
+23.8,23,ordem procedimental,Site,4,Outros
+23.9,23,ordem procedimental,Site,2,Outros
+24.6,24,ordem procedimental,Site,4,Outros
+24.8,24,ordem procedimental,Site,2,Outros
+24.10,24,ordem procedimental,Site,39,Outros
+24.11,24,ordem procedimental,Site,2,Outros
+24.14,24,ordem procedimental,Site,14,Outros
+24.19,24,juntada,Site,2,Outros
+24.22,24,ordem procedimental,Site,1,Outros
+24.24,24,manifestacao,Site,15,Manifestação
+24.30,24,ordem procedimental,Site,2,Outros
+24.31,24,ordem procedimental,Site,3,Outros
+24.32,24,ordem procedimental,Site,3,Outros
+24.35,24,ordem procedimental,Site,18,Outros
+24.36,24,ordem procedimental,Site,1,Outros
+24.37,24,ordem procedimental,Site,5,Outros
+24.38,24,ordem procedimental,Site,4,Outros
+24.39,24,ordem procedimental,Site,9,Outros
+25.1,25,ordem procedimental,Site,3,Outros
+25.2,25,ordem procedimental,Site,2,Outros
+25.3,25,ordem procedimental,Site,2,Outros
+25.4,25,ordem procedimental,Site,8,Outros
+25.5,25,ordem procedimental,Site,2,Outros
+25.6,25,ordem procedimental,Site,4,Outros
+25.7,25,ordem procedimental,Site,3,Outros
+25.8,25,ordem procedimental,Site,6,Outros
+25.9,25,ordem procedimental,Site,3,Outros
+25.10,25,ordem procedimental,Site,3,Outros
+26.1,26,ordem procedimental,Site,4,Outros
+26.2,26,ordem procedimental,Site,4,Outros
+26.3,26,ordem procedimental,Site,60,Outros
+26.4,26,ordem procedimental,Site,6,Outros
+26.5,26,ordem procedimental,Site,2,Outros
+26.6,26,ordem procedimental,Site,4,Outros
+26.7,26,ordem procedimental,Site,6,Outros
+26.8,26,ordem procedimental,Site,31,Outros
+26.9,26,ordem procedimental,Site,2,Outros
+26.10,26,ordem procedimental,Site,5,Outros
+26.11,26,ordem procedimental,Site,5,Outros
+26.12,26,ordem procedimental,Site,3,Outros
+26.13,26,ordem procedimental,Site,2,Outros
+26.14,26,ordem procedimental,Site,3,Outros
+26.15,26,ordem procedimental,Site,42,Outros
+26.16,26,ordem procedimental,Site,8,Outros
+26.17,26,ordem procedimental,Site,2,Outros
+26.18,26,ordem procedimental,Site,19,Outros
+26.19,26,ordem procedimental,Site,3,Outros
+26.20,26,ordem procedimental,Site,29,Outros
+26.21,26,ordem procedimental,Site,3,Outros
+26.22,26,ordem procedimental,Site,4,Outros
+26.23,26,ordem procedimental,Site,8,Outros
+26.24,26,ordem procedimental,Site,3,Outros
+26.25,26,ordem procedimental,Site,5,Outros
+26.26,26,ordem procedimental,Site,2,Outros
+26.27,26,ordem procedimental,Site,3,Outros
+26.28,26,ordem procedimental,Site,3,Outros
+26.29,26,ordem procedimental,Site,10,Outros
+26.30,26,ordem procedimental,Site,3,Outros
+26.31,26,ordem procedimental,Site,7,Outros
+26.32,26,ordem procedimental,Site,2,Outros
+26.33,26,ordem procedimental,Site,3,Outros
+26.34,26,ordem procedimental,Site,2,Outros
+26.35,26,ordem procedimental,Site,2,Outros
+28.2,28,ordem procedimental,Site,10,Outros
+28.3,28,ordem procedimental,Site,4,Outros
+28.4,28,ordem procedimental,Site,2,Outros
+28.5,28,ordem procedimental,Site,6,Outros
+28.6,28,ordem procedimental,Site,4,Outros
+28.7,28,ordem procedimental,Site,4,Outros
+28.8,28,ordem procedimental,Site,3,Outros
+28.9,28,ordem procedimental,Site,3,Outros
+28.10,28,ordem procedimental,Site,2,Outros
+28.11,28,ordem procedimental,Site,8,Outros
+28.12,28,ordem procedimental,Site,6,Outros
+28.13,28,ordem procedimental,Site,3,Outros
+28.14,28,ordem procedimental,Site,2,Outros
+28.15,28,ordem procedimental,Site,4,Outros
+28.16,28,ordem procedimental,Site,2,Outros
+28.17,28,ordem procedimental,Site,3,Outros
+28.18,28,ordem procedimental,Site,5,Outros
+28.19,28,ordem procedimental,Site,5,Outros
+28.20,28,ordem procedimental,Site,2,Outros
+28.21,28,ordem procedimental,Site,2,Outros
+28.22,28,ordem procedimental,Site,2,Outros
+28.23,28,ordem procedimental,Site,6,Outros
+28.24,28,ordem procedimental,Site,5,Outros
+28.25,28,ordem procedimental,Site,5,Outros
+28.26,28,ordem procedimental,Site,2,Outros
+28.27,28,ordem procedimental,Site,4,Outros
+28.28,28,ordem procedimental,Site,3,Outros
+28.40,28,manifestacao,Site,4,Manifestação
+28.44,28,manifestacao,Site,6,Manifestação
+28.45,28,manifestacao,Site,6,Manifestação
+29.2,29,ordem procedimental,Site,2,Outros
+29.3,29,ordem procedimental,Site,3,Outros
+29.4,29,ordem procedimental,Site,2,Outros
+29.6,29,ordem procedimental,Site,4,Outros
+29.8,29,ordem procedimental,Site,2,Outros
+29.10,29,ordem procedimental,Site,4,Outros
+29.11,29,ordem procedimental,Site,3,Outros
+29.12,29,ordem procedimental,Site,14,Outros
+29.13,29,ordem procedimental,Site,3,Outros
+29.14,29,ordem procedimental,Site,3,Outros
+29.15,29,ordem procedimental,Site,3,Outros
+29.16,29,ordem procedimental,Site,3,Outros
+29.17,29,ordem procedimental,Site,2,Outros
+29.18,29,ordem procedimental,Site,3,Outros
+29.19,29,ordem procedimental,Site,3,Outros
+29.20,29,ordem procedimental,Site,4,Outros
+29.27,29,manifestacao,Site,3,Manifestação
+29.29,29,manifestacao,Site,3,Manifestação
+30.14,30,ordem procedimental,Site,4,Outros
+30.15,30,ordem procedimental,Site,1,Outros
+30.17,30,ordem procedimental,Site,46,Outros
+30.18,30,ordem procedimental,Site,1,Outros
+30.19,30,ordem procedimental,Site,11,Outros
+30.20,30,ordem procedimental,Site,1,Outros
+30.21,30,ordem procedimental,Site,9,Outros
+30.22,30,ordem procedimental,Site,4,Outros
+30.23,30,ordem procedimental,Site,4,Outros
+30.24,30,ordem procedimental,Site,3,Outros
+30.25,30,ordem procedimental,Site,3,Outros
+30.26,30,ordem procedimental,Site,3,Outros
+30.27,30,ordem procedimental,Site,5,Outros
+30.28,30,ordem procedimental,Site,1,Outros
+30.29,30,ordem procedimental,Site,5,Outros
+31.1,31,ordem procedimental,Site,4,Outros
+31.2,31,ordem procedimental,Site,10,Outros
+31.3,31,ordem procedimental,Site,3,Outros
+31.5,31,ordem procedimental,Site,5,Outros
+31.6,31,ordem procedimental,Site,4,Outros
+31.7,31,ordem procedimental,Site,147,Outros
+31.8,31,ordem procedimental,Site,8,Outros
+31.9,31,ordem procedimental,Site,14,Outros
+31.10,31,ordem procedimental,Site,3,Outros
+31.11,31,ordem procedimental,Site,3,Outros
+31.12,31,ordem procedimental,Site,4,Outros
+31.13,31,ordem procedimental,Site,5,Outros
+31.14,31,ordem procedimental,Site,14,Outros
+31.15,31,ordem procedimental,Site,5,Outros
+31.16,31,ordem procedimental,Site,9,Outros
+31.17,31,ordem procedimental,Site,4,Outros
+31.18,31,ordem procedimental,Site,5,Outros
+31.19,31,ordem procedimental,Site,18,Outros
+31.20,31,ordem procedimental,Site,4,Outros
+31.21,31,ordem procedimental,Site,20,Outros
+31.22,31,ordem procedimental,Site,3,Outros
+31.23,31,ordem procedimental,Site,8,Outros
+31.24,31,ordem procedimental,Site,4,Outros
+31.25,31,ordem procedimental,Site,56,Outros
+31.26,31,ordem procedimental,Site,4,Outros
+31.27,31,ordem procedimental,Site,4,Outros
+31.28,31,ordem procedimental,Site,4,Outros
+31.29,31,ordem procedimental,Site,3,Outros
+31.30,31,ordem procedimental,Site,4,Outros
+31.31,31,ordem procedimental,Site,4,Outros
+31.32,31,ordem procedimental,Site,4,Outros
+31.33,31,ordem procedimental,Site,6,Outros
+31.34,31,ordem procedimental,Site,5,Outros
+31.35,31,ordem procedimental,Site,5,Outros
+31.36,31,ordem procedimental,Site,6,Outros
+31.37,31,ordem procedimental,Site,3,Outros
+31.38,31,ordem procedimental,Site,3,Outros
+31.39,31,ordem procedimental,Site,4,Outros
+31.40,31,ordem procedimental,Site,4,Outros
+31.41,31,ordem procedimental,Site,4,Outros
+31.42,31,ordem procedimental,Site,3,Outros
+31.43,31,ordem procedimental,Site,3,Outros
+31.44,31,ordem procedimental,Site,3,Outros
+31.45,31,ordem procedimental,Site,7,Outros
+31.46,31,ordem procedimental,Site,3,Outros
+31.47,31,ordem procedimental,Site,4,Outros
+31.48,31,ordem procedimental,Site,4,Outros
+31.49,31,ordem procedimental,Site,5,Outros
+31.50,31,ordem procedimental,Site,5,Outros
+31.51,31,ordem procedimental,Site,3,Outros
+31.52,31,ordem procedimental,Site,4,Outros
+31.53,31,ordem procedimental,Site,4,Outros
+32.1,32,ata de missao,Site,26,Outros
+33.1,33,ordem procedimental,Site,4,Outros
+33.2,33,ordem procedimental,Site,4,Outros
+33.3,33,ordem procedimental,Site,4,Outros
+33.4,33,ordem procedimental,Site,5,Outros
+33.5,33,ordem procedimental,Site,37,Outros
+33.6,33,ordem procedimental,Site,2,Outros
+33.7,33,ordem procedimental,Site,6,Outros
+33.8,33,ordem procedimental,Site,3,Outros
+33.9,33,ordem procedimental,Site,15,Outros
+33.10,33,ordem procedimental,Site,4,Outros
+33.11,33,ordem procedimental,Site,9,Outros
+33.12,33,ordem procedimental,Site,8,Outros
+33.13,33,ordem procedimental,Site,2,Outros
+33.14,33,ordem procedimental,Site,3,Outros
+33.15,33,ordem procedimental,Site,6,Outros
+33.16,33,ordem procedimental,Site,39,Outros
+33.17,33,ordem procedimental,Site,4,Outros
+33.18,33,ordem procedimental,Site,3,Outros
+33.19,33,ordem procedimental,Site,4,Outros
+33.20,33,ordem procedimental,Site,8,Outros
+33.21,33,ordem procedimental,Site,6,Outros
+33.22,33,ordem procedimental,Site,99,Outros
+33.23,33,ordem procedimental,Site,4,Outros
+33.24,33,ordem procedimental,Site,4,Outros
+33.25,33,ordem procedimental,Site,24,Outros
+33.26,33,ordem procedimental,Site,4,Outros
+33.27,33,ordem procedimental,Site,69,Outros
+33.28,33,ordem procedimental,Site,2,Outros
+33.29,33,ordem procedimental,Site,20,Outros
+33.30,33,ordem procedimental,Site,3,Outros
+33.31,33,ordem procedimental,Site,14,Outros
+33.32,33,ordem procedimental,Site,47,Outros
+33.33,33,ordem procedimental,Site,37,Outros
+33.34,33,ordem procedimental,Site,6,Outros
+33.35,33,ordem procedimental,Site,4,Outros
+33.36,33,ordem procedimental,Site,6,Outros
+33.41,33,manifestacao,Site,3,Manifestação
+33.52,33,manifestacao,Site,8,Manifestação
+33.53,33,manifestacao,Site,6,Manifestação
+34.02,34,sentenca parcial,Site,126,Sentença
+35.02,35,termo de arbitragem,Site,24,Termo de Arbitragem
+35.03,35,sentenca arbitral parcial,Site,205,Sentença
+36.01,36,termo de arbitragem,Site,47,Termo de Arbitragem
+36.02,36,sentenca parcial,Site,17,Sentença
+36.03,36,sentenca exclui uniao,Site,8,Sentença
+36.04,36,decisao esclarecimentos pos exclusao da unia,Site,6,Pedido
+36.05,36,decisao em pedido de esclarecimentos,Site,7,Pedido
+37.01,37,termo de arbitragem,Site,23,Termo de Arbitragem
+37.02,37,sentenca arbitral,Site,91,Sentença
+11.2,11,requerimento arbitragem,Câmara,17,Requerimento de Arbitragem
+11.3,11,resposta ao requerimento,Câmara,19,Resposta a documento
+11.4,11,resposta ao requerimento,Câmara,5,Resposta a documento
+11.5,11,resposta ao requerimento,Câmara,52,Resposta a documento
+11.6,11,alegacoes iniciais,Câmara,95,Alegações Iniciais
+11.7,11,replica,Câmara,76,Réplica
+11.8,11,replica,Câmara,153,Réplica
+11.9,11,replica,Câmara,105,Réplica
+2.4,2,requerimento de arbitragem,Câmara,19,Requerimento de Arbitragem
+2.5,2,resposta ao requerimento,Câmara,19,Resposta a documento
+2.6,2,alegacoes iniciais,Câmara,299,Alegações Iniciais
+2.7,2,replica,Câmara,286,Réplica
+2.8,2,treplica,Câmara,170,Tréplica
+2.9,2,alegacoes finais,Câmara,76,Alegações Finais
+2.10,2,alegacoes finais,Câmara,55,Alegações Finais
+2.11,2,alegacoes finais (interveniente anomala),Câmara,42,Alegações Finais
+7.3,7,requerimento de arbitragem,Câmara,16,Requerimento de Arbitragem
+7.4,7,resposta ao requerimento,Câmara,5,Resposta a documento
+7.5,7,alegacoes iniciais,Câmara,229,Alegações Iniciais
+7.6,7,resposta as alegacoes inicias,Câmara,405,Resposta a documento
+7.7,7,manifestacao interveniente nomala,Câmara,5,Manifestação
+7.8,7,replica,Câmara,359,Réplica
+7.9,7,treplica,Câmara,342,Tréplica
+7.10,7,especificacao provas,Câmara,19,Especificação Provas
+7.11,7,especificacao provas,Câmara,8,Especificação Provas
+7.12,7,alegacoes finais,Câmara,40,Alegações Finais
+7.13,7,alegacoes finais,Câmara,33,Alegações Finais
+23.10,23,alegacoes iniciais,Câmara,26,Alegações Iniciais
+23.11,23,resposta as alegacoes iniciais,Câmara,46,Resposta a documento
+23.12,23,replica,Câmara,38,Réplica
+23.13,23,treplica,Câmara,120,Tréplica
+23.14,23,especificacao provas,Câmara,40,Especificação Provas
+23.15,23,especificacao provas,Câmara,8,Especificação Provas
+4.3,4,requerimento de arbitragem,Câmara,16,Requerimento de Arbitragem
+4.4,4,resposta ao requerimento,Câmara,8,Resposta a documento
+4.5,4,manifestacao interveniente anomala,Câmara,16,Manifestação
+4.6,4,manifestacao requerente,Câmara,7,Manifestação
+4.7,4,manifestacao requerida,Câmara,4,Manifestação
+4.8,4,alegacoes iniciais,Câmara,64,Alegações Iniciais
+4.9,4,resposta as alegacoes iniciais,Câmara,122,Resposta a documento
+4.10,4,replica,Câmara,113,Réplica
+4.11,4,treplica,Câmara,149,Tréplica
+4.12,4,pedido suspensao,Câmara,2,Pedido
+4.13,4,pedido suspensao,Câmara,1,Pedido
+5.2,5,requerimento de arbitragem,Câmara,15,Requerimento de Arbitragem
+5.3,5,resposta ao requerimento,Câmara,7,Resposta a documento
+5.4,5,alegacoes iniciais,Câmara,113,Alegações Iniciais
+5.5,5,resposta as alegacoes iniciais,Câmara,265,Resposta a documento
+5.6,5,replica,Câmara,139,Réplica
+5.7,5,treplica,Câmara,219,Tréplica
+5.8,5,alegacoes finais,Câmara,96,Alegações Finais
+5.9,5,alegacoes finais,Câmara,60,Alegações Finais
+5.10,5,pedido suspensao,Câmara,3,Pedido
+5.11,5,pedido suspensao,Câmara,2,Pedido
+6.2,6,requerimento de arbitragem,Câmara,24,Requerimento de Arbitragem
+6.3,6,resposta ao requerimento,Câmara,10,Resposta a documento
+6.4,6,alegacoes iniciais,Câmara,80,Alegações Iniciais
+6.6,6,replica,Câmara,155,Réplica
+6.7,6,treplica,Câmara,203,Tréplica
+6.8,6,especificacao provas,Câmara,7,Especificação Provas
+6.9,6,especificacao provas,Câmara,10,Especificação Provas
+1.2,1,requerimento de arbitragem,Câmara,19,Requerimento de Arbitragem
+1.3,1,resposta ao requerimento,Câmara,16,Resposta a documento
+1.4,1,alegacoes iniciais,Câmara,83,Alegações Iniciais
+1.5,1,resposta as alegacoes iniciais,Câmara,76,Resposta a documento
+1.6,1,replica,Câmara,51,Réplica
+1.7,1,treplica,Câmara,56,Tréplica
+1.8,1,especificacao provas,Câmara,6,Especificação Provas
+1.9,1,especificacao provas,Câmara,7,Especificação Provas
+1.10,1,sentenca parcial,Câmara,110,Sentença
+3.2,3,requerimento de arbitragem,Câmara,22,Requerimento de Arbitragem
+3.3,3,resposta ao requerimento,Câmara,6,Resposta a documento
+3.4,3,alegacoes iniciais,Câmara,153,Alegações Iniciais
+3.5,3,resposta as alegacoes iniciais,Câmara,194,Resposta a documento
+3.6,3,replica,Câmara,188,Réplica
+3.7,3,treplica,Câmara,172,Tréplica

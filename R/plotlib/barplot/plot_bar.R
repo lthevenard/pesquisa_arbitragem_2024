@@ -19,7 +19,7 @@ plot_bar <- function(
     frows=NULL,
     fcols=NULL,
     fscales="fixed",
-    width=bar_width
+    width=0.8
 ) {
   
   # Rename variables ----
