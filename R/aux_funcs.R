@@ -272,8 +272,29 @@ time_boxplot_by_var_reordering <- function(
 
 ## Other Plots ----
 
-# simple_bar_plot <- function(
-#     df,
-#     bar_var,
-#     
-#   )
+
+simple_question_bar_plot <- function(
+    df,
+    bar_var,
+    nudge=1,
+    title_label="",
+    subtitle_label=subtitle,
+    x_label="",
+    y_label="",
+    colors=c(single, "#555")
+) {
+  df %>%
+    rename_df_from_str(bar_var, "question") %>%
+    group_by(question) %>%
+    count_and_perc() %>%
+    mutate(question_fill = ifelse(question %in% c("N/A", "N/D"), "1", "0")) %>%
+    ggplot(aes(x=question, y=n, label=lbl_n_perc, fill=question_fill, color=question_fill)) +
+    geom_col() +
+    geom_text(nudge_y=nudge, size=3, fontface="bold") +
+    labs(
+      title=title_label, subtitle=subtitle_label, x=x_label, y=y_label
+    ) +
+    scale_fill_manual(values=colors) +
+    scale_color_manual(values=colors) +
+    theme(legend.position="none")
+}

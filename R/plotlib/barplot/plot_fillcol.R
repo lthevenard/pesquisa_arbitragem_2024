@@ -61,7 +61,7 @@ plot_fillcol <- function(
   }
   
   # Choose the color ----
-  if (fill_colors=="choose") {
+  if (fill_colors[1]=="choose") {
     n <- df$var3 %>% unique() %>% length()
     fill_colors <- choose_colors(n)
   }
@@ -114,21 +114,45 @@ plot_fillcol <- function(
   if (annotate) {
     if (fill_position=="dodge") { # Plot annotation when position is "dodge"
       if (flip) {
-        p <- p +
-          geom_text(aes(label=lvar),
-                    size=lbl_size, 
-                    color=lbl_colors,
-                    fontface="bold",
-                    position=position_dodge(width=bar_width),
-                    hjust=dodge_adjustment)
+        if (length(lbl_colors) > 1) {
+          p <- p +
+            geom_text(aes(label=lvar, color=var3),
+                      size=lbl_size,
+                      fontface="bold",
+                      position=position_dodge(width=bar_width),
+                      hjust=dodge_adjustment,
+                      show.legend = F) +
+            scale_color_manual(values=lbl_colors)
+        } else {
+          p <- p +
+            geom_text(aes(label=lvar),
+                      size=lbl_size, 
+                      color=lbl_colors,
+                      fontface="bold",
+                      position=position_dodge(width=bar_width),
+                      hjust=dodge_adjustment)
+        }
+        
       } else {
-        p <- p +
-          geom_text(aes(label=lvar),
-                    size=lbl_size, 
-                    color=lbl_colors,
-                    fontface="bold",
-                    position=position_dodge(width=bar_width),
-                    vjust=dodge_adjustment)
+        if (length(lbl_colors) > 1) {
+          p <- p +
+            geom_text(aes(label=lvar, color=var3),
+                      size=lbl_size, 
+                      fontface="bold",
+                      position=position_dodge(width=bar_width),
+                      vjust=dodge_adjustment,
+                      show.legend = F) +
+            scale_color_manual(values=lbl_colors)
+        } else {
+          p <- p +
+            geom_text(aes(label=lvar),
+                      size=lbl_size, 
+                      color=lbl_colors,
+                      fontface="bold",
+                      position=position_dodge(width=bar_width),
+                      vjust=dodge_adjustment)
+        }
+        
       }
     } else { # Plot annotation when position far all other cases
       annotation_df <- prepare_annotation_df(

@@ -257,6 +257,12 @@ df_arbitragens %>%
 
 save_plot("1_transparencia.png")
 
+df_arbitragens %>%
+  group_by(transparencia) %>% 
+  count_and_perc() %>%
+  select(transparencia, n, lbl_perc) %>%
+  export_table("1_transparencia.csv")
+
 ### 2 - Transparência por UF
 
 df_arbitragens %>%
@@ -279,6 +285,13 @@ df_arbitragens %>%
 
 save_plot("2_transparencia_por_uf.png")
 
+df_arbitragens %>%
+  mutate(uf_arbitragem = ifelse(uf_arbitragem == "Federal", "Federais", "Estaduais (SP e RJ)") %>% fct_rev()) %>% 
+  group_by(uf_arbitragem, transparencia) %>% 
+  count_and_perc() %>%
+  select(uf_arbitragem, transparencia, n, perc) %>%
+  export_table("2_transparencia_por_uf.csv")
+
 ### 3 - Arbitragens por ano
 
 df_arbitragens %>%
@@ -292,7 +305,7 @@ df_arbitragens %>%
     "uf_arbitragem",
     title_label="Arbitragens ao longo do tempo, por UF",
     x_label="Ano de início da arbitragem",
-    y_label="Número de arbitragens identificadas",
+    y_label="Número de arbitragens",
     fill_label="Unidade Federativa: ",
     fill_position="stack",
     order_bars=FALSE,
@@ -499,6 +512,7 @@ df_arbitragens %>%
     begin_col="data_inicio",
     end_col="data_fim",
     first_year=2002,
+    last_year=2024,
     time_description="do início ao fim da arbitragem"
   )
 
@@ -620,7 +634,7 @@ df_arbitragens_resultados %>%
   mutate(resultado_acordo = ifelse(
     str_detect(resultado_final, "Acordo"),
     "Acordo",
-    "Outros Resultados",
+    "Outros Resultados"
   )) %>%
   time_prepare_interval_df("data_inicio", "data_termo") %>%
   from_df_to_summary("resultado_acordo", "time_interval")
@@ -689,7 +703,7 @@ df_arbitragens_setores %>%
     "uf_arbitragem",
     title_label="Setores das arbitragens, por UF",
     x_label="Setor da arbitragem",
-    y_label="Número de arbitragens identificadas",
+    y_label="Número de arbitragens",
     fill_label="Unidade Federativa: ",
     fill_position="stack",
     flip=TRUE,
@@ -974,4 +988,566 @@ df_valor_da_causa %>%
        y = "Setor", x = "Valor da causa (Milhões de R$)")
 
 save_plot("29_valor_da_causa_telecom_x_demais_setores.png")
- 
+
+## Honorários ----
+
+### 30 - Honorários dos árbitros por UF
+
+honorarios_arbitros %>%
+  left_join(df_arbitragens, "id_arbitragem") %>%
+  ggplot(aes(x=total_honorarios_arbitros / 1000000, fill=uf_arbitragem)) +
+  geom_histogram(binwidth=0.5, color="black", boundary=0, closed="left") +
+  scale_fill_manual(values=pal_uf) +
+  scale_x_continuous(breaks=seq(0, 2.5, 0.5)) +
+  labs(title = "Valor total dos honorários dos árbitros por arbitragem, por UF",
+       subtitle=subtitle, y="Número de arbitragens", fill="Unidade Federativa: ",
+       x="Valor total dos honorários dos árbitros (Milhões de R$)") +
+  theme(legend.position = "bottom")
+
+save_plot("30_valor_honorarios_arbitros_uf.png")
+
+### 31 - Honorários dos árbitros por objeto
+
+df_objetos_honorarios <- df_arbitragens_objetos %>%
+  inner_join(honorarios_arbitros, "id_arbitragem")
+
+df_objetos_honorarios %>%
+  mutate(objeto = objeto %>%
+           str_remove("Se há ") %>%
+           str_to_title() %>%
+           str_replace(" De ", " de ") %>% 
+           fct_reorder(total_honorarios_arbitros)) %>% 
+  ggplot(aes(y=total_honorarios_arbitros / 1000000, x=objeto)) +
+  geom_boxplot(color=single, fill=pal_uf[3]) +
+  scale_y_continuous(breaks=seq(0, 2.5, 0.5)) +
+  labs(title = "Valor total dos honorários dos árbitros, por objeto da arbitragem",
+       subtitle=subtitle, x="Presença do objeto na arbitragem",
+       y="Valor total dos honorários dos árbitros (Milhões de R$)")
+
+save_plot("31_valor_honorarios_arbitros_objeto.png")
+
+### 32 - Honorários de sucumbência
+
+honorarios_sucumbencia %>%
+  left_join(df_arbitragens, "id_arbitragem") %>%
+  ggplot(aes(x=total_honorarios_sucumbencia / 1000000)) +
+  geom_histogram(binwidth=0.5, color="black", fill=single, boundary=0, closed="left") +
+  scale_x_continuous(breaks=seq(0, 3.5, 0.5)) +
+  labs(title = "Valor total dos honorários de sucumbência por arbitragem",
+       subtitle=subtitle, y="Número de arbitragens", 
+       x="Valor total dos honorários de sucumbência (Milhões de R$)")
+
+save_plot("32_valor_honorarios_sucumbencia.png")
+
+## Objeto ----
+
+df_arbitragens_objetos %>%
+  mutate(objeto = objeto %>%
+           str_remove("Se há ") %>%
+           str_to_title() %>%
+           str_replace(" De ", " de ") %>% 
+           fct_infreq() %>% fct_rev()) %>%
+  count(objeto) %>%
+  mutate(perc = n / 55,
+         perc_lbl = paste0(round(perc*100, 1), "%") %>% str_replace("\\.", ",")) %>%
+  ggplot(aes(x=perc, y=objeto, label=perc_lbl)) +
+  geom_col(fill=single) +
+  geom_text(color=single, size=3, fontface="bold", nudge_x=0.02) +
+  labs(title="Objetos das arbitragens",
+       subtitle=subtitle, y="Objeto",
+       x="Percentual das arbitragens relacionadas ao objeto") +
+  scale_x_continuous(labels=scales::label_percent())
+
+save_plot("33_objetos_das_arbitragens.png")
+
+## Fundamento legal ----
+
+### 34 - Fundamento Legal das Arbitragens
+
+df_arbitragens %>%
+  mutate(
+    lei_fundamento = paste0(
+      "Lei n. ",
+      lei_fundamento %>%
+      str_remove("^\\D*") %>%
+      str_remove(",.+") %>%
+      str_replace("/(?=[7,9])", "/19") %>%
+      str_replace("/(?=0)", "/20") %>%
+      str_replace("^9(?=\\d)", "9.") %>%
+      str_replace("^$", "N/D")) %>%
+      fct_infreq() %>%
+      fct_rev()
+  ) %>%
+  group_by(lei_fundamento, uf_arbitragem) %>% 
+  count_and_perc() %>%
+  mutate(lbl_n = as.character(n)) %>% 
+  plot_fillcol(
+    "lei_fundamento",
+    "uf_arbitragem",
+    title_label="Leis que dão o principal fundamento legal das arbitragens, por UF",
+    x_label="Número de arbitragens",
+    y_label="Fundamento Legal",
+    fill_label="Unidade Federativa: ",
+    fill_position="stack",
+    flip=TRUE,
+    order_bars=FALSE,
+    fill_colors=pal_uf,
+    var_label="lbl_n",
+    lbl_colors="white",
+    theme_func=theme_bw
+  ) +
+  theme(legend.position="bottom")
+
+save_plot("34_fundamento_legal.png")
+
+## Percentuais das sucumbências atribuído ao PP ----
+
+### 35 - Percentuais das sucumbências atribuído ao PP
+
+sucumbencia_uf_simple_counts <- df_arbitragens %>% 
+  filter(!(sucumbencia_prevista_para_pp %in% c("N/A", "N/D"))) %>%
+  mutate(uf_simple = ifelse(uf_arbitragem == "Federal", "Federal", "SP e RJ")) %>%
+  count(uf_simple) %>% 
+  mutate(uf_simple_n = paste(uf_simple, " (N = ", n, ")")) %>% 
+  select(uf_simple, uf_simple_n)
+
+df_arbitragens %>% 
+  filter(!(sucumbencia_prevista_para_pp %in% c("N/A", "N/D"))) %>%
+  mutate(sucumbencia_prevista_para_pp = as.numeric(sucumbencia_prevista_para_pp),
+         uf_simple = ifelse(uf_arbitragem == "Federal", "Federal", "SP e RJ")) %>%
+  left_join(sucumbencia_uf_simple_counts, by = "uf_simple") %>% 
+  ggplot(aes(x = uf_simple_n, y = sucumbencia_prevista_para_pp)) +
+  geom_boxplot(color=single, fill = pal_uf[3]) +
+  labs(title = "Percentual de sucumbência atribuído ao Poder Público: Arbitragens Federais vs. Estaduais",
+       subtitle = subtitle,
+       x = "Abitragens Federais x Estaduais",
+       y = "Percentual da sucumbência atribuída ao Poder Público") +
+  scale_y_continuous(labels = scales::label_percent())
+
+save_plot("35_sucumbencia_do_pp_comparacao_ufs.png")
+
+## Resultados Finais ----
+
+df_arbitragens_resultados %>%
+  mutate(resultado_final = fct_infreq(resultado_final) %>%
+           fct_rev() %>%
+           fct_relevel("N/D")) %>%
+  group_by(resultado_final) %>% 
+  count_and_perc() %>%
+  ggplot(aes(y=resultado_final, x=n, label=lbl_n_perc)) +
+  geom_col(fill=single) +
+  geom_text(nudge_x=0.5, color=single, size=3, fontface="bold") +
+  labs(title="Resultado final das arbitragens encerradas",
+       subtitle=subtitle,
+       x="Número de arbitragens",
+       y="Resultado Final") +
+  scale_x_continuous(breaks=seq(0, 8, 2))
+
+save_plot("36_resultados.png")
+
+### Resultado Final por UF
+
+df_arbitragens_resultados %>%
+  mutate(resultado_final = fct_infreq(resultado_final) %>%
+           fct_rev() %>%
+           fct_relevel("N/D")) %>%
+  group_by(resultado_final, uf_arbitragem) %>% 
+  count_and_perc() %>%
+  mutate(lbl_n = as.character(n)) %>% 
+  plot_fillcol(
+    "resultado_final",
+    "uf_arbitragem",
+    title_label="Resultado final das arbitragens encerradas, por UF",
+    x_label="Número de arbitragens",
+    y_label="Resultado Final",
+    fill_label="Unidade Federativa: ",
+    fill_position="stack",
+    flip=TRUE,
+    order_bars=FALSE,
+    fill_colors=pal_uf,
+    var_label="lbl_n",
+    lbl_colors="white",
+    theme_func=theme_bw
+  ) +
+  theme(legend.position="bottom") +
+  scale_x_continuous(breaks=seq(0, 8, 2))
+
+save_plot("37_resultados_por_uf.png")
+
+## Resultados parciais ----
+
+df_arbitragens %>% 
+  simple_question_bar_plot(
+    bar_var="teve_sentenca_parcial",
+    nudge=1,
+    title_label="Arbitragens com sentença parcial",
+    subtitle_label=subtitle,
+    x_label="Houve sentença parcial?",
+    y_label="Número de arbitragens"
+  )
+
+save_plot("38_teve_sentenca_parcial.png")
+
+df_arbitragens %>%
+  group_by(uf_arbitragem, teve_sentenca_parcial) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="teve_sentenca_parcial",
+    fill_category="uf_arbitragem",
+    title_label="Arbitragens com sentença parcial por UF",
+    x_label="Houve sentença parcial?",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    theme_func=theme_bw 
+  )
+
+save_plot("39_sentenca_parcial_por_uf.png")
+
+df_arbitragens_resultados_parciais <- df_arbitragens %>% 
+  filter(resultado_sentenca_parcial != "N/A") %>% 
+  mutate(resultado_sentenca_parcial = fct_infreq(resultado_sentenca_parcial) %>%
+           fct_relevel("N/D", after=Inf))
+
+df_arbitragens_resultados_parciais %>% 
+  simple_question_bar_plot(
+    bar_var="resultado_sentenca_parcial",
+    nudge=0.2,
+    title_label="Resultados das sentenças parciais das arbitragens",
+    subtitle_label=subtitle,
+    x_label="Resultado da Sentença Parcial",
+    y_label="Número de arbitragens"
+  )
+
+save_plot("40_resultados_parciais.png")
+
+df_arbitragens_resultados_parciais %>%
+  group_by(uf_arbitragem, resultado_sentenca_parcial) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="resultado_sentenca_parcial",
+    fill_category="uf_arbitragem",
+    title_label="Resultados das sentenças parciais das arbitragens, por UF",
+    x_label="Resultado da Sentença Parcial",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    lbl_size=2.5,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    theme_func=theme_bw
+  )
+
+save_plot("41_resultados_parciais_por_uf.png")
+  
+df_arbitragens_resultados %>%
+  time_calc_year_end() %>%
+  filter(!is.na(year)) %>%
+  mutate(acordo=ifelse(
+    str_detect(resultado_final, "Acordo"),
+    "Acordo", "Outros Resultados"
+  )) %>%
+  group_by(acordo, year) %>% 
+  count_and_perc() %>%
+  mutate(lbl_n = as.character(n)) %>% 
+  plot_fillcol(
+    "year",
+    "acordo",
+    title_label="Acordos vs outros resultados, por ano de fim da arbitragem",
+    x_label="Ano de fim da arbitragem",
+    y_label="Número de Arbitragens Encerradas",
+    fill_label="Resultado Final: ",
+    fill_position="stack",
+    order_bars=FALSE,
+    fill_colors=pal_uf[c(3, 1)],
+    var_label="lbl_n",
+    lbl_colors="white",
+    theme_func=theme_bw
+  ) +
+  theme(legend.position="bottom") +
+  scale_x_continuous(breaks=2002:2024)
+
+save_plot("42_acordos_por_ano.png")
+
+counts_resultado_final <- df_arbitragens_resultados %>%
+  filter(!(resultado_final %in% c("N/A", "N/D"))) %>%
+  count(resultado_final) %>%
+  rename(n_rf="n")
+
+df_arbitragens_objetos %>% 
+  filter(!(resultado_final %in% c("N/A", "N/D"))) %>%
+  mutate(resultado_final = ifelse(str_detect(as.character(resultado_final), "pedido"),
+                                  "Improcedente",
+                                  as.character(resultado_final))) %>%
+  count(resultado_final, objeto) %>%
+  mutate(objeto=factor(objeto, ordered=TRUE)) %>%
+  group_by(resultado_final) %>% 
+  complete(objeto,
+           fill=list(n=0)) %>%
+  left_join(counts_resultado_final, by="resultado_final") %>% 
+  mutate(perc=n/n_rf,
+         lbl=scales::label_percent(accuracy=0.1, decimal.mark=",")(perc)) %>% 
+  ggplot(aes(y=objeto, x=perc, label=lbl)) +
+  geom_col(fill=single) +
+  geom_text(size=3, fontface="bold", color=single, hjust=-0.08) +
+  labs(title="Percentuais dos objetos, por resultado final",
+       subtitle=subtitle, x="Percentual das arbitragens relacionadas ao objeto", y="Objeto") +
+  scale_x_continuous(labels=scales::label_percent()) +
+  facet_wrap(~resultado_final)
+
+save_plot("43_percentuais_objetos_por_resultado.png")
+
+df_arbitragens %>%
+  group_by(cam_class, uf_arbitragem) %>% 
+  count_and_perc() %>%
+  mutate(lbl_n = as.character(n)) %>% 
+  plot_fillcol(
+    "cam_class",
+    "uf_arbitragem",
+    title_label="Câmaras arbitrais, por UF",
+    x_label="Câmara Arbitral",
+    y_label="Número de Arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_position="stack",
+    order_bars=FALSE,
+    fill_colors=pal_uf,
+    var_label="lbl_n",
+    lbl_colors="white",
+    theme_func=theme_bw
+  ) +
+  theme(legend.position="bottom")
+
+save_plot("44_camaras_por_uf.png")
+
+df_arbitragens %>% 
+  simple_question_bar_plot(
+    bar_var="houve_reconvencao",
+    nudge=1,
+    title_label="Arbitragens com reconvenção",
+    subtitle_label=subtitle,
+    x_label="Houve reconvenção?",
+    y_label="Número de arbitragens"
+  )
+
+save_plot("45_teve_reconvencao.png")
+
+df_arbitragens %>%
+  group_by(uf_arbitragem, houve_reconvencao) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="houve_reconvencao",
+    fill_category="uf_arbitragem",
+    title_label="Arbitragens com reconvenção por UF",
+    x_label="Houve reconvenção?",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    theme_func=theme_bw 
+  )
+
+save_plot("46_teve_reconvencao_por_uf.png")
+
+impugna_questions_dict <- list(
+  houve_impugnacao = "Houve impugnação?",
+  impugnacao_bem_sucedida = "A impugnação foi bem sucedida?",
+  houve_recusa = "Houve recusa?",
+  houve_renuncia = "Houve renúncia?"
+)
+
+return_impugna_question <- function(q) {
+  return(impugna_questions_dict[[q]])
+}
+
+df_relacao_ator_arbitragem %>%
+  filter(str_detect(tipo_relacao, "Árbitro")) %>%
+  select(all_of(names(impugna_questions_dict))) %>%
+  pivot_longer(cols=names(impugna_questions_dict), names_to="question", values_to="answer") %>%
+  mutate(question=map_chr(question, return_impugna_question),
+         answer=factor(answer, ordered=T, levels=c("Sim", "Não", "N/A", "N/D"))) %>%
+  group_by(question, answer) %>%
+  count_and_perc() %>%
+  mutate(color_case=answer %in% c("N/A", "N/D")) %>%
+  ggplot(aes(x=answer, y=n, label=lbl_n_perc, color=color_case, fill=color_case)) +
+  geom_col() +
+  geom_text(size=3, fontface="bold", nudge_y=5) +
+  labs(
+    title="Impugnações, recusas e renúncias no processo de seleção dos árbitros",
+    subtitle=subtitle, x="", y="Número de Árbitros"
+  ) +
+  scale_color_manual(values=c(single, "#555")) +
+  scale_fill_manual(values=c(single, "#555")) +
+  facet_wrap(~question, ncol=2) +
+  theme(legend.position="none")
+
+save_plot("47_impugnacoes_arbitros.png")
+
+df_arbitragens %>% 
+  simple_question_bar_plot(
+    bar_var="houve_intervencao_terceiros",
+    nudge=1,
+    title_label="Arbitragens com intervenção de terceiros",
+    subtitle_label=subtitle,
+    x_label="Houve intervenção de terceiros?",
+    y_label="Número de arbitragens"
+  )
+
+save_plot("48_houve_intervencao_terceiros.png")
+
+df_arbitragens %>%
+  group_by(uf_arbitragem, houve_intervencao_terceiros) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="houve_intervencao_terceiros",
+    fill_category="uf_arbitragem",
+    title_label="Arbitragens com intervenção de terceiros por UF",
+    x_label="Houve intervenção de terceiros?",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    theme_func=theme_bw 
+  )
+
+save_plot("49_houve_intervencao_terceiros_por_uf.png")
+
+
+df_arbitragens %>%
+  group_by(uf_arbitragem, caiu_em_precatorio) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="caiu_em_precatorio",
+    fill_category="uf_arbitragem",
+    title_label="Arbitragens que caíram em precatório, por UF",
+    x_label="Caiu em precatório?",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    lbl_size=2.5,
+    theme_func=theme_bw 
+  )
+
+save_plot("50_caiu_em_precatorio_por_uf.png")
+
+df_documentos %>%
+  mutate(tipo_documento = tipo_documento %>%
+           fct_lump_n(10, other_level = "Outros_tipos") %>% 
+           fct_infreq() %>%
+           fct_rev() %>%
+           fct_relevel("Outros_tipos")) %>%
+  group_by(tipo_documento) %>%
+  count_and_perc() %>%
+  ggplot(aes(x=n, y=tipo_documento, label=lbl_n_perc)) +
+  geom_col(fill=single) +
+  geom_text(size=3, fontface="bold", color=single, hjust=-0.03, vjust=0) +
+  labs(
+    title="Tipos de documentos mais frequentemente disponíveis",
+    x="Número de Documentos",
+    y="Tipo de Documento"
+  ) +
+  scale_x_continuous(limits=c(0, 90), breaks=seq(0, 90, 15))
+
+save_plot("51_tipos_documentos_disponiveis.png")
+
+macro_tipos_comparar <- c(
+  "Alegações Iniciais",
+  "Réplica",
+  "Tréplica",
+  "Alegações Finais",
+  "Decisão",
+  "Sentença"
+)
+
+doc_class_colors = c(single, "#C14444")
+doc_class_fills = c(pal_uf[3], "#D09B9B")
+
+df_documentos_comparar_tipos <- df_documentos %>% 
+  filter(macro_tipo %in% macro_tipos_comparar) %>%
+  mutate(doc_class = ifelse(macro_tipo %in% macro_tipos_comparar[1:4], "Partes", "Corte"),
+         macro_tipo = factor(macro_tipo, ordered=T, levels=macro_tipos_comparar))
+
+df_documentos_comparar_tipos %>%
+  ggplot(aes(x=macro_tipo, y=tamanho_documento, fill=doc_class, color=doc_class)) +
+  geom_boxplot() +
+  scale_color_manual(values=doc_class_colors) +
+  scale_fill_manual(values=doc_class_fills) +
+  labs(title="Comparação dos tamanhos de alguns tipos documentos",
+       subtitle=subtitle,
+       x="Tipo de Documento", y="Tamanho do Documento (Número de Páginas)") +
+  guides(fill = guide_legend(title="Classe de autores: ", reverse=T),
+         color=guide_legend(title="Classe de autores: ", reverse=T))
+
+save_plot("52_comparacao_tamanho_dos_documentos.png")
+
+df_documentos %>%
+  left_join(df_arbitragens, by="id_arbitragem") %>%
+  time_calc_year_end() %>%
+  filter(macro_tipo == "Sentença") %>%
+  ggplot(aes(x=year, y=tamanho_documento)) +
+  scale_x_continuous(breaks=2000:2025) +
+  geom_smooth(method="lm",
+              se=F,
+              color="pink",
+              linetype="dashed") +
+  geom_point(color=single,
+             alpha=0.6,
+             size=3) +
+  stat_summary(geom="pointrange",
+               fun=function(x) {ifelse(length(x) < 2, NA, mean(x))},
+               color=pal_uf[1],
+               shape=8) +
+  labs(title="Tamanhos das sentenças arbitrais por ano de fim da arbitragem",
+       subtitle=subtitle,
+       x="Ano de fim da arbitragem",
+       y="Tamanho da Sentença Arbitral")
+
+save_plot("53_tamanho_das_sentencas_por_ano.png")
+
+df_arbitragens %>% 
+  simple_question_bar_plot(
+    bar_var="teve_liminar_pre_arbitral",
+    nudge=1,
+    title_label="Arbitragens com liminar pré-arbitral",
+    subtitle_label=subtitle,
+    x_label="Houve liminar pré-arbitral?",
+    y_label="Número de arbitragens"
+  )
+
+save_plot("54_teve_liminar_pre_arbitral.png")
+
+df_arbitragens %>%
+  group_by(uf_arbitragem, teve_liminar_pre_arbitral) %>%
+  count_and_perc() %>%
+  ungroup() %>%
+  plot_fillcol(
+    col_category="teve_liminar_pre_arbitral",
+    fill_category="uf_arbitragem",
+    title_label="Arbitragens com liminar pré-arbitral por UF",
+    x_label="Houve liminar pré-arbitral?",
+    y_label="Número de arbitragens",
+    fill_label="Unidade Federativa: ",
+    fill_colors=pal_uf,
+    lbl_colors=pal_uf,
+    order_bars=FALSE,
+    order_fill=FALSE,
+    theme_func=theme_bw 
+  )
+
+save_plot("55_teve_liminar_pre_arbitral_por_uf.png")
+
